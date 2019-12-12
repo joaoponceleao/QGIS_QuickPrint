@@ -411,7 +411,7 @@ class QuickPrint3:
             theMap.updateBoundingRect()
             theMap.setRect(QRectF(x, y, w, h)) 
             theMap.setPos(x,y)
-            theMap.setFrameEnabled(True)
+            theMap.setFrameEnabled(False)
             
             # project.mapLayers().values():
             theMap.setLayers(project.mapThemeCollection().masterVisibleLayers())   # remember ANNOTATION!
@@ -420,88 +420,88 @@ class QuickPrint3:
             l.addItem(theMap)
             
             # add title
-            titleFont = QFont(self.textFont, int(font_scale * 14))
-            titleFont.setBold(True)
+            # titleFont = QFont(self.textFont, int(font_scale * 14))
+            # titleFont.setBold(True)
 
-            titelLabel = QgsLayoutItemLabel(l)
-            titelLabel.setText(titel)
-            titelLabel.setPos(lm,10)
-            titelLabel.setFont(titleFont)    
-            titelLabel.adjustSizeToText()
-            l.addItem(titelLabel)
+            # titelLabel = QgsLayoutItemLabel(l)
+            # titelLabel.setText(titel)
+            # titelLabel.setPos(lm,10)
+            # titelLabel.setFont(titleFont)    
+            # titelLabel.adjustSizeToText()
+            # l.addItem(titelLabel)
 
             # add subtitle
-            subTitleFont = QFont(self.textFont, int(font_scale * 12))
-            subTitleFont.setBold(False)
+            # subTitleFont = QFont(self.textFont, int(font_scale * 12))
+            # subTitleFont.setBold(False)
                 
-            subTitelLabel = QgsLayoutItemLabel(l)
-            subTitelLabel.setText(subTitel)
-            subTitelLabel.setPos(lm, 20)
-            subTitelLabel.setFont(subTitleFont)	    
-            subTitelLabel.adjustSizeToText()
-            l.addItem(subTitelLabel)  
+            # subTitelLabel = QgsLayoutItemLabel(l)
+            # subTitelLabel.setText(subTitel)
+            # subTitelLabel.setPos(lm, 20)
+            # subTitelLabel.setFont(subTitleFont)	    
+            # subTitelLabel.adjustSizeToText()
+            # l.addItem(subTitelLabel)  
 
-            textFont = QFont(self.textFont, int(font_scale * 10))  
+            # textFont = QFont(self.textFont, int(font_scale * 10))  
 
             # add logo
             
-            if self.logoImagePath:
-                try:
-                    logo = QgsLayoutItemPicture(l)
-                    logo.setPicturePath(self.logoImagePath)
-                    logo.attemptSetSceneRect(QRectF((paperSize[0] - paperSize[0] / 3), 0, refSize / 3, refSize / 3 * 756 / 2040 )) 
+            # if self.logoImagePath:
+                # try:
+                    # logo = QgsLayoutItemPicture(l)
+                    # logo.setPicturePath(self.logoImagePath)
+                    # logo.attemptSetSceneRect(QRectF((paperSize[0] - paperSize[0] / 3), 0, refSize / 3, refSize / 3 * 756 / 2040 )) 
                     # logo.setFrameEnabled(True)
-                    l.addItem(logo)
-                except:
+                    # l.addItem(logo)
+                # except:
                     # failed to add the logo, show message and continue
-                    self.iface.messageBar().pushMessage(
-                        "Warning", self.tr(u"Failed adding logo ") + \
-                        self.logoImagePath, 
-                        Qgis.Warning)
+                    # self.iface.messageBar().pushMessage(
+                        # "Warning", self.tr(u"Failed adding logo ") + \
+                        # self.logoImagePath, 
+                        # Qgis.Warning)
 
             #add date
-            dateLabel = QgsLayoutItemLabel(l)
-            d = time.localtime()
+            # dateLabel = QgsLayoutItemLabel(l)
+            # d = time.localtime()
             #dString = "%d-%d-%d" % (d[2],  d[1],  d[0])
-            dString = self.dateFormatString.format(day = d[2], month = d[1], year = d[0])
-            dateLabel.setText(dString)
-            dateLabel.setFont(textFont)
-            dateLabel.adjustSizeToText()
-            dateStringWidth = dateLabel.sizeForText().width()
-            dateLabel.setPos(paperSize[0] - lm - dateStringWidth -5, (paperSize[1] - bm) + tm + 5)
-            l.addItem(dateLabel)
+            # dString = self.dateFormatString.format(day = d[2], month = d[1], year = d[0])
+            # dateLabel.setText(dString)
+            # dateLabel.setFont(textFont)
+            # dateLabel.adjustSizeToText()
+            # dateStringWidth = dateLabel.sizeForText().width()
+            # dateLabel.setPos(paperSize[0] - lm - dateStringWidth -5, (paperSize[1] - bm) + tm + 5)
+            # l.addItem(dateLabel)
                 
             # add scalebar
-            scaleBar = QgsLayoutItemScaleBar(l)
-            scaleBar.setLinkedMap(theMap)
-            scaleBar.applyDefaultSettings()
-            scaleBar.applyDefaultSize()
+            # scaleBar = QgsLayoutItemScaleBar(l)
+            # scaleBar.setLinkedMap(theMap)
+            # scaleBar.applyDefaultSettings()
+            # scaleBar.applyDefaultSize()
             # scaleBar.setStyle('Line Ticks Down') 
-            scaleBar.setNumberOfSegmentsLeft(0)
-            scaleBar.setNumberOfSegments (3)
-            scaleBar.update()
-            scaleBar.setPos(lm + 10, tm + (paperSize[1] - bm) - 20 )
-            l.addItem(scaleBar)
+            # scaleBar.setNumberOfSegmentsLeft(0)
+            # scaleBar.setNumberOfSegments (3)
+            # scaleBar.update()
+            # scaleBar.setPos(lm + 10, tm + (paperSize[1] - bm) - 20 )
+            # l.addItem(scaleBar)
 
             # add attribution
-            bronnenLabel = QgsLayoutItemLabel(l)
-            bronnenLabel.setText(bronnen)
-            bronnenLabel.setFont(textFont)
-            bronnenLabel.adjustSizeToText()	        # Doesn't work for multiline stuff, hence:
-            bronnenLabel.attemptSetSceneRect(QRectF(lm, (paperSize[1] - bm) + tm + 5, paperSize[0] - lm - dateStringWidth -5 -lm -lm, paperSize[1] - ((paperSize[1] - bm) + tm + 5) - 10 ))    
-            l.addItem(bronnenLabel)
+            # bronnenLabel = QgsLayoutItemLabel(l)
+            # bronnenLabel.setText(bronnen)
+            # bronnenLabel.setFont(textFont)
+            # bronnenLabel.adjustSizeToText()	        # Doesn't work for multiline stuff, hence:
+            # bronnenLabel.attemptSetSceneRect(QRectF(lm, (paperSize[1] - bm) + tm + 5, paperSize[0] - lm - dateStringWidth -5 -lm -lm, paperSize[1] - ((paperSize[1] - bm) + tm + 5) - 10 ))    
+            # l.addItem(bronnenLabel)
 
             # add remarks
-            opmLabel = QgsLayoutItemLabel(l)
-            opmLabel.setText(opmerkingen)
-            opmLabel.setFont(textFont)
-            opmLabel.adjustSizeToText()	            # Doesn't work for multiline stuff, hence:
-            opmLabel.attemptSetSceneRect(QRectF(lm, paperSize[1] - 10, paperSize[0] - lm -lm , 400 )) 
-            l.addItem(opmLabel)
+            # opmLabel = QgsLayoutItemLabel(l)
+            # opmLabel.setText(opmerkingen)
+            # opmLabel.setFont(textFont)
+            # opmLabel.adjustSizeToText()	            # Doesn't work for multiline stuff, hence:
+            # opmLabel.attemptSetSceneRect(QRectF(lm, paperSize[1] - 10, paperSize[0] - lm -lm , 400 )) 
+            # l.addItem(opmLabel)
             
             # export pdf
             exporter =  QgsLayoutExporter(l)
-            pdf_settings = exporter.PdfExportSettings() #dpi?
+            pdf_settings = exporter.PdfExportSettings(dpi=300) #dpi?
             exporter.exportToPdf(self.dlg.pdfFileNameBox.displayText(), pdf_settings)
 
             # inform the user about the result
